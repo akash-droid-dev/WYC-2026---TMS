@@ -4,6 +4,8 @@
 
 Tournament Management System for the World Yogasana Championship, built with React, TypeScript, and Zustand.
 
+**Live site:** https://akash-droid-dev.github.io/WYC-2026---TMS/
+
 ## Features
 
 - **Public View**: Schedule, Live Results, Medal Table, Event Info
@@ -33,3 +35,12 @@ Open [http://localhost:5173](http://localhost:5173) and use **View as** to switc
 npm run build
 npm run preview
 ```
+
+## Enable GitHub Pages (one-time setup)
+
+1. Go to **Settings** → **Pages** in this repo
+2. Under **Build and deployment** → **Source**, select **Deploy from a branch**
+3. Under **Branch**, select **gh-pages** and **/ (root)**
+4. Click **Save**
+
+The workflow will push the build to `gh-pages` on each push to `main`. After enabling Pages, the site will be live within a minute.
