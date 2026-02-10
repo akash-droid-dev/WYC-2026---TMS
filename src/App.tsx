@@ -41,7 +41,7 @@ function App() {
         <Route path="/" element={<Navigate to="/tms" replace />} />
         <Route path="/tms" element={
           <ErrorBoundary>
-            <div className="tms-app" style={{ minHeight: '100vh', background: 'var(--tms-canvas)', padding: 20 }}>
+            <div className="tms-app" style={{ minHeight: '100vh', background: 'var(--tms-canvas)' }}>
               <RoleSelector />
               <Outlet />
             </div>

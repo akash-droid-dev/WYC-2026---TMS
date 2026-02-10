@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import TMSLogo from '../components/TMSLogo';
 
@@ -8,36 +9,44 @@ const NAV = [
 
 export default function JudgeLayout() {
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <aside style={{
-        width: 220,
-        background: 'linear-gradient(180deg, var(--tms-green-light) 0%, var(--tms-green-pale) 100%)',
-        color: 'white',
-        padding: '1.5rem 0',
-      }}>
-        <div style={{ padding: '0 1rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
+    <div className="tms-sidebar-layout">
+      <button
+        type="button"
+        className="tms-sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={sidebarOpen}
+      >
+        ☰
+      </button>
+      {sidebarOpen && (
+        <div
+          className="tms-sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setSidebarOpen(false)}
+          role="button"
+          tabIndex={0}
+          aria-label="Close menu"
+        />
+      )}
+      <aside className={`tms-sidebar tms-sidebar-judge ${sidebarOpen ? 'open' : ''}`}>
+        <div className="tms-sidebar-header">
           <TMSLogo size={40} showLabel compact />
-          <div style={{ marginTop: 12, fontWeight: 600, fontSize: 13 }}>Judge Panel</div>
-          <div style={{ fontSize: 12, opacity: 0.8 }}>Judge: A. Kumar</div>
+          <div className="tms-sidebar-title">Judge Panel</div>
+          <div className="tms-sidebar-subtitle">Judge: A. Kumar</div>
         </div>
-        <nav style={{ marginTop: 16 }}>
+        <nav className="tms-sidebar-nav">
           {NAV.map((n) => {
             const isActive = location.pathname.includes(n.path) && !location.pathname.includes('scoring');
             return (
               <Link
                 key={n.path}
                 to={`/tms/judge/${n.path}`}
-                style={{
-                  display: 'block',
-                  padding: '0.5rem 1rem',
-                  color: isActive ? 'white' : 'rgba(255,255,255,0.8)',
-                  textDecoration: 'none',
-                  fontSize: 14,
-                  borderLeft: isActive ? '4px solid var(--tms-saffron)' : '4px solid transparent',
-                  background: isActive ? 'rgba(255,255,255,0.15)' : 'transparent',
-                }}
+                className={`tms-sidebar-link ${isActive ? 'active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
               >
                 {n.label}
               </Link>
@@ -45,7 +54,7 @@ export default function JudgeLayout() {
           })}
         </nav>
       </aside>
-      <main style={{ flex: 1, padding: '2rem', background: 'var(--tms-canvas)' }}>
+      <main className="tms-sidebar-main">
         <Outlet />
       </main>
     </div>

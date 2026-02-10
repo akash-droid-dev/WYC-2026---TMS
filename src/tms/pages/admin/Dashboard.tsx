@@ -21,7 +21,7 @@ export default function AdminDashboard() {
       <h1 className="tms-page-title">Dashboard</h1>
       <p style={{ color: 'var(--tms-slate)', marginBottom: 24 }}>WYC 2026 · Tournament Overview</p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 }}>
+      <div className="tms-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 32 }}>
         <div className="tms-stat-card">
           <div className="stat-value">{athletes.length}</div>
           <div className="stat-label">ATHLETES · {delegations.length} countries</div>
@@ -40,7 +40,7 @@ export default function AdminDashboard() {
         </div>
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+      <div className="tms-two-col" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
         <div className="tms-content-card">
           <h3 className="tms-section-header">Live Sessions · Day 2 Morning</h3>
           {liveSessions.slice(0, 3).map((s) => (

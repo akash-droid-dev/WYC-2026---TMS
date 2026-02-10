@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useTMSStore } from '../store/tmsStore';
 import TMSLogo from '../components/TMSLogo';
@@ -14,48 +15,56 @@ export default function DelegationLayout() {
   const location = useLocation();
   const delegations = useTMSStore((s) => s.delegations);
   const delegation = delegations.find((d) => d.id === 'IND');
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
-      <aside style={{
-        width: 240,
-        background: 'linear-gradient(180deg, var(--tms-green-light) 0%, var(--tms-green-pale) 100%)',
-        color: 'white',
-        padding: '1.5rem 0',
-      }}>
-        <div style={{ padding: '0 1rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
+    <div className="tms-sidebar-layout">
+      <button
+        type="button"
+        className="tms-sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={sidebarOpen}
+      >
+        ☰
+      </button>
+      {sidebarOpen && (
+        <div
+          className="tms-sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setSidebarOpen(false)}
+          role="button"
+          tabIndex={0}
+          aria-label="Close menu"
+        />
+      )}
+      <aside className={`tms-sidebar tms-sidebar-delegation ${sidebarOpen ? 'open' : ''}`}>
+        <div className="tms-sidebar-header">
           <TMSLogo size={40} showLabel compact />
-          <div style={{ marginTop: 12, fontWeight: 600, fontSize: 13 }}>Delegation Manager</div>
-          <div style={{ fontSize: 12, opacity: 0.8 }}>My Athletes · India</div>
+          <div className="tms-sidebar-title">Delegation Manager</div>
+          <div className="tms-sidebar-subtitle">My Athletes · India</div>
         </div>
-        <nav style={{ marginTop: 16 }}>
+        <nav className="tms-sidebar-nav">
           {NAV.map((n) => {
             const isActive = location.pathname.includes(n.path);
             return (
               <Link
                 key={n.path}
                 to={`/tms/delegation/${n.path}`}
-                style={{
-                  display: 'block',
-                  padding: '0.5rem 1rem',
-                  color: isActive ? 'white' : 'rgba(255,255,255,0.8)',
-                  textDecoration: 'none',
-                  fontSize: 14,
-                  borderLeft: isActive ? '4px solid var(--tms-saffron)' : '4px solid transparent',
-                  background: isActive ? 'rgba(255,255,255,0.15)' : 'transparent',
-                }}
+                className={`tms-sidebar-link ${isActive ? 'active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
               >
                 {n.label}
               </Link>
             );
           })}
         </nav>
-        <div style={{ padding: '1rem', marginTop: 'auto', fontSize: 12, opacity: 0.7 }}>
+        <div className="tms-sidebar-footer">
           Delegation: {delegation?.name} ({delegation?.code})<br />
           Manager: S. Patel
         </div>
       </aside>
-      <main style={{ flex: 1, padding: '2rem', background: 'var(--tms-canvas)' }}>
+      <main className="tms-sidebar-main">
         <Outlet />
       </main>
     </div>

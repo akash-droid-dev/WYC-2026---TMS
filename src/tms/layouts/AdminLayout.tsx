@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import { useTMSStore } from '../store/tmsStore';
 import TMSLogo from '../components/TMSLogo';
@@ -21,31 +22,41 @@ const SIDEBAR = [
 export default function AdminLayout() {
   const location = useLocation();
   const offlineMode = useTMSStore((s) => s.offlineMode);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div className="tms-sidebar-layout">
       {offlineMode && (
         <div className="tms-offline-banner" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100 }}>
           OFFLINE MODE · Syncing...
         </div>
       )}
-      <aside style={{
-        width: 260,
-        background: 'linear-gradient(180deg, var(--tms-green-light) 0%, var(--tms-green-pale) 100%)',
-        color: 'white',
-        padding: '1.5rem 0',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        height: '100vh',
-        overflowY: 'auto',
-      }}>
-        <div style={{ padding: '0 1rem 1rem', borderBottom: '1px solid rgba(255,255,255,0.2)' }}>
+      <button
+        type="button"
+        className="tms-sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        aria-label="Toggle menu"
+        aria-expanded={sidebarOpen}
+      >
+        ☰
+      </button>
+      {sidebarOpen && (
+        <div
+          className="tms-sidebar-overlay"
+          onClick={() => setSidebarOpen(false)}
+          onKeyDown={(e) => e.key === 'Escape' && setSidebarOpen(false)}
+          role="button"
+          tabIndex={0}
+          aria-label="Close menu"
+        />
+      )}
+      <aside className={`tms-sidebar tms-sidebar-admin ${sidebarOpen ? 'open' : ''}`}>
+        <div className="tms-sidebar-header">
           <TMSLogo size={40} showLabel compact />
-          <div style={{ marginTop: 12, fontWeight: 700, fontSize: 14 }}>Tournament Management</div>
-          <div style={{ fontSize: 12, opacity: 0.8 }}>Super Admin · AK</div>
+          <div className="tms-sidebar-title">Tournament Management</div>
+          <div className="tms-sidebar-subtitle">Super Admin · AK</div>
         </div>
-        <nav style={{ marginTop: 16 }}>
+        <nav className="tms-sidebar-nav">
           {SIDEBAR.map((n) => {
             const path = n.path || 'admin';
             const isActive = path === 'admin'
@@ -57,15 +68,8 @@ export default function AdminLayout() {
               <Link
                 key={n.path || 'dashboard'}
                 to={`/tms/admin/${n.path}`}
-                style={{
-                  display: 'block',
-                  padding: '0.5rem 1rem',
-                  color: active ? 'white' : 'rgba(255,255,255,0.8)',
-                  textDecoration: 'none',
-                  fontSize: 14,
-                  borderLeft: active ? '4px solid var(--tms-saffron)' : '4px solid transparent',
-                  background: active ? 'rgba(255,255,255,0.15)' : 'transparent',
-                }}
+                className={`tms-sidebar-link ${active ? 'active' : ''}`}
+                onClick={() => setSidebarOpen(false)}
               >
                 {n.label}
               </Link>
@@ -73,7 +77,7 @@ export default function AdminLayout() {
           })}
         </nav>
       </aside>
-      <main style={{ flex: 1, marginLeft: 260, padding: '2rem', background: 'var(--tms-canvas)', minHeight: '100vh' }}>
+      <main className="tms-sidebar-main">
         <Outlet />
       </main>
     </div>

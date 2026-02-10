@@ -34,12 +34,7 @@ export default function RoleSelector() {
   };
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 36,
-      right: 24,
-      zIndex: 1000,
-    }}>
+    <div className="tms-role-selector">
       <button
         onClick={() => setOpen(!open)}
         style={{

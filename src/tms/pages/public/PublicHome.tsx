@@ -10,7 +10,7 @@ const CARDS = [
 export default function PublicHome() {
   return (
     <div>
-      <div style={{
+      <div className="tms-hero" style={{
         textAlign: 'center',
         padding: '4rem 2rem 3rem',
         background: 'linear-gradient(180deg, rgba(255,255,255,0.8) 0%, transparent 100%)',
@@ -33,9 +33,9 @@ export default function PublicHome() {
           Ahmedabad · June 4 to June 8
         </p>
       </div>
-      <div style={{
+      <div className="tms-home-cards" style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+        gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 180px), 1fr))',
         gap: '1.25rem',
         maxWidth: 900,
         margin: '0 auto',

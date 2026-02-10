@@ -62,7 +62,7 @@ export default function DelegationAthletes() {
         Delegation Manager: S. Patel · {indiaAthletes.length} registered athletes
       </p>
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16, marginBottom: 24 }}>
+      <div className="tms-stat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 16, marginBottom: 24 }}>
         <div className="tms-stat-card">
           <div className="stat-value">{indiaAthletes.length}</div>
           <div className="stat-label">Athletes</div>
