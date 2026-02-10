@@ -36,11 +36,13 @@ npm run build
 npm run preview
 ```
 
-## Enable GitHub Pages (one-time setup)
+## Enable GitHub Pages (one-time setup) ⚠️
 
-1. Go to **Settings** → **Pages** in this repo
+**Your site will 404 until you do this:**
+
+1. Open **[Settings → Pages](https://github.com/akash-droid-dev/WYC-2026---TMS/settings/pages)**
 2. Under **Build and deployment** → **Source**, select **Deploy from a branch**
-3. Under **Branch**, select **gh-pages** and **/ (root)**
+3. Under **Branch**, choose **gh-pages** and **/ (root)**
 4. Click **Save**
 
-The workflow will push the build to `gh-pages` on each push to `main`. After enabling Pages, the site will be live within a minute.
+The `gh-pages` branch already has your built site. After saving, the site will be live at the URL above within ~1 minute.
