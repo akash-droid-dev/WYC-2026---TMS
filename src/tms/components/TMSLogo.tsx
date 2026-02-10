@@ -10,8 +10,8 @@ export default function TMSLogo({ size = 44, showLabel = true, compact = false }
   return (
     <Link to="/tms" className="tms-logo" style={{ textDecoration: 'none', color: 'inherit' }}>
       <img
-        src="/tms-yoga-logo.png"
-        alt="WYC 2026 Yogasana Championship"
+        src={`${import.meta.env.BASE_URL}tms-yoga-logo.png`}
+        alt="WYC 2026"
         style={{ height: size, width: 'auto', objectFit: 'contain' }}
       />
       {showLabel && (

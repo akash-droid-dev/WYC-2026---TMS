@@ -16,7 +16,7 @@ export default function PublicLayout() {
         boxShadow: '0 4px 20px rgba(10, 22, 40, 0.1)',
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
-          <TMSLogo size={48} showLabel />
+          <TMSLogo size={48} showLabel compact />
           <span style={{ opacity: 0.9, fontSize: 13, color: 'var(--tms-navy)' }}>
             World Yogasana Championship · Ahmedabad
           </span>
