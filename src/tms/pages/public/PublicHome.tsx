@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 const CARDS = [
-  { to: '/tms/schedule', title: 'Schedule', desc: '3-day program · 56 events', icon: '📅' },
+  { to: '/tms/schedule', title: 'Schedule', desc: 'Jun 4–8 · 56 events', icon: '📅' },
   { to: '/tms/results', title: 'Live Results', desc: 'Real-time scoring updates', icon: '📊' },
   { to: '/tms/medals', title: 'Medal Table', desc: 'By country · By athlete', icon: '🏅' },
   { to: '/tms/event/trad-ind-subjr-M', title: 'Event Info', desc: 'Details & start lists', icon: '📋' },

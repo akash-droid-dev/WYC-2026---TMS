@@ -17,7 +17,7 @@ export default function PublicSchedule() {
   return (
     <div>
       <h1 className="tms-page-title">Competition Schedule</h1>
-      <p style={{ color: 'var(--tms-slate)', marginBottom: 24 }}>3-day program · 56 events · 4 venues</p>
+      <p style={{ color: 'var(--tms-slate)', marginBottom: 24 }}>Jun 4–8 · 56 events · 4 venues</p>
 
       <div className="tms-tabs">
         {DAYS.map((d) => (

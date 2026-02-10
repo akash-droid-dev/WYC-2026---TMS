@@ -36,7 +36,7 @@ export default function DelegationSchedule() {
     <div>
       <h1 className="tms-page-title">Schedule · My Delegation</h1>
       <p style={{ color: 'var(--tms-slate)', marginBottom: 24 }}>
-        Filtered to India entries · 3-day competition
+        Filtered to India entries · Jun 4–8
       </p>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>

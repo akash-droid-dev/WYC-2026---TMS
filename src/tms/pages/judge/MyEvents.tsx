@@ -19,10 +19,10 @@ export default function JudgeMyEvents() {
       </p>
 
       <div style={{ display: 'flex', gap: 8, marginBottom: 24 }}>
-        <span className="tms-badge tms-badge-draft">Draft</span>
-        <span className="tms-badge tms-badge-confirmed">Confirmed</span>
-        <span className="tms-badge tms-badge-live">LIVE</span>
-        <span className="tms-badge tms-badge-completed">Completed</span>
+        <span className="tms-filter-pill">Draft</span>
+        <span className="tms-filter-pill">Confirmed</span>
+        <span className="tms-filter-pill">LIVE</span>
+        <span className="tms-filter-pill">Completed</span>
       </div>
 
       {offlineMode && (

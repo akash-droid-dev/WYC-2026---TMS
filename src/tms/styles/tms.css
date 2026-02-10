@@ -157,6 +157,22 @@
 .tms-badge-final { background: rgba(19, 136, 8, 0.12); color: var(--tms-green); }
 .tms-badge-cancelled { background: rgba(196, 69, 54, 0.12); color: var(--tms-red); }
 
+/* Filter pills - consistent styling for filter tabs */
+.tms-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.9rem;
+  font-size: var(--tms-small);
+  font-weight: 600;
+  border-radius: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: white;
+  color: var(--tms-navy);
+  border: 1.5px solid #e2e8f0;
+  cursor: default;
+}
+
 @keyframes pulse-live {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.8; }
