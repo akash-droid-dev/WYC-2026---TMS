@@ -904,7 +904,7 @@
 .tms-sidebar {
   width: 260px;
   flex-shrink: 0;
-  background: linear-gradient(180deg, #D8EBF5 0%, #E2F0E8 50%, #E8F5EC 100%);
+  background: linear-gradient(180deg, #FFB366 0%, #B8E0B8 50%, #99D699 100%);
   color: var(--tms-navy);
   padding: 1.5rem 0;
   display: flex;
