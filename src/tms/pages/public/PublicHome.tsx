@@ -48,6 +48,20 @@ export default function PublicHome() {
           </Link>
         ))}
       </div>
+      <section
+        className="tms-disciplines-strip tms-disciplines-logos-only"
+        aria-label="Yogasana disciplines"
+        style={{ background: 'var(--tms-canvas, #E4E8EE)' }}
+      >
+        <div className="tms-disciplines-strip-inner">
+          <img
+            src={`${import.meta.env.BASE_URL}disciplines-logos.png`}
+            alt="Yogasana disciplines: meditation, tree pose, dynamic pose, warrior, dancer, forward fold, seated, backbend, supine, prone"
+            className="tms-disciplines-logos-img"
+            style={{ mixBlendMode: 'screen' }}
+          />
+        </div>
+      </section>
     </div>
   );
 }

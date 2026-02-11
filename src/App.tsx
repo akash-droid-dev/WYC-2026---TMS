@@ -41,9 +41,26 @@ function App() {
         <Route path="/" element={<Navigate to="/tms" replace />} />
         <Route path="/tms" element={
           <ErrorBoundary>
-            <div className="tms-app" style={{ minHeight: '100vh', background: 'var(--tms-canvas)' }}>
-              <RoleSelector />
-              <Outlet />
+            <div className="tms-app">
+              <div
+                className="tms-app-bg"
+                aria-hidden
+                style={{
+                  position: 'fixed',
+                  inset: 0,
+                  zIndex: 0,
+                  backgroundImage: `url(${import.meta.env.BASE_URL}tms-bg-materials.png)`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  backgroundRepeat: 'no-repeat',
+                  mixBlendMode: 'screen',
+                  pointerEvents: 'none',
+                }}
+              />
+              <div className="tms-app-content" style={{ position: 'relative', zIndex: 1, minHeight: '100vh' }}>
+                <RoleSelector />
+                <Outlet />
+              </div>
             </div>
           </ErrorBoundary>
         }>

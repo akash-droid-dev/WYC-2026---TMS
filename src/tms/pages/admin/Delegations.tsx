@@ -38,8 +38,32 @@ export default function AdminDelegations() {
 
   const uniqueStatuses = useMemo(() => [...new Set(delegationsRaw.map((d) => d.status))].sort(), [delegationsRaw]);
 
+  const baseUrl = import.meta.env.BASE_URL || '';
+
   return (
-    <div>
+    <div className="tms-delegations-page">
+      <div
+        className="tms-delegations-page-overlap"
+        aria-hidden
+        style={{
+          position: 'fixed',
+          bottom: 24,
+          right: 24,
+          width: 200,
+          height: 200,
+          borderRadius: '50%',
+          zIndex: 2,
+          backgroundImage: `url(${baseUrl}delegations-bg.png)`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          mixBlendMode: 'screen',
+          backgroundColor: 'var(--tms-canvas, #E4E8EE)',
+          opacity: 0.28,
+          pointerEvents: 'none',
+        }}
+      />
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <h1 className="tms-page-title">Delegation Management</h1>
       <p style={{ color: 'var(--tms-slate)', marginBottom: 24 }}>
         FR-010→014 · Country/State delegations, athlete rostering
@@ -117,6 +141,7 @@ export default function AdminDelegations() {
         <button className="tms-btn tms-btn-outline" style={{ marginTop: 16, marginLeft: 8 }}>Import from Reg.</button>
       </div>
       <AddDelegationModal isOpen={showAddDelegation} onClose={() => setShowAddDelegation(false)} />
+      </div>
     </div>
   );
 }
