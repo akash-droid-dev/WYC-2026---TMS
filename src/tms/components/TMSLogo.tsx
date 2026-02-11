@@ -12,7 +12,7 @@ export default function TMSLogo({ size = 44, showLabel = true, compact = false }
       <img
         src={`${import.meta.env.BASE_URL}tms-yoga-logo.png`}
         alt="WYC 2026"
-        style={{ height: size, width: 'auto', objectFit: 'contain', mixBlendMode: 'screen' }}
+        style={{ height: size, width: 'auto', objectFit: 'contain' }}
       />
       {showLabel && (
         <div style={{ display: 'flex', flexDirection: 'column', gap: compact ? 0 : 2 }}>

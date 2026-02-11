@@ -691,7 +691,7 @@
 /* Public Layout */
 .tms-public-layout { min-height: 100vh; }
 .tms-public-header {
-  background: linear-gradient(90deg, #FFB366 0%, #99CCF2 45%, #99D699 100%);
+  background: linear-gradient(90deg, #FFB366 0%, #99D699 100%);
   color: var(--tms-navy);
   padding: 1rem 1.5rem;
   padding-right: 190px; /* Reserve space for RoleSelector (View as) */
